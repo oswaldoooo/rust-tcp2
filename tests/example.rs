@@ -1,8 +1,3 @@
-# rust-tcp2
-**tcp2 support connection redirect. connection lost will not effect io. io will block if connection lost. and it will resume when connection recover.**
-
-### Example
-```rust
 #[cfg(test)]
 mod examples {
     #[tokio::test]
@@ -32,7 +27,6 @@ mod examples {
     }
     #[tokio::test]
     async fn client() {
-      //connection id. if connection id same, them are same connect(use for redirect)
         let id = [0x33, 0x22, 0x44, 0x55, 0x66, 0x77, 0xac, 0x01];
         let mut conn = tcp2::TcpStream::connect("127.0.0.1:9999".to_string(), id)
             .await
@@ -46,5 +40,3 @@ mod examples {
         println!("{}", String::from_utf8(buff[0..size].to_vec()).unwrap());
     }
 }
-
-```
